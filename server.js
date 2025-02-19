@@ -1,5 +1,6 @@
 const Hapi = require('@hapi/hapi');
 const Mongoose = require('mongoose');
+const auth = require('./auth');
 require('dotenv').config();
 
 const init = async () => {
@@ -15,13 +16,18 @@ const init = async () => {
             }
         }
     });
-
+    
     Mongoose.connect(process.env.DB_URL).then(() => {
         console.log("Connected to MondoDB");
     }).catch((error) => {
         console.log("Error when connecting to database: " + error);
     });
 
+    // Register JWT auth strategy
+    await auth.register(server);
+
+    // Routes
+    require('./Routes/User.Routes')(server);
 
     await server.start();
     console.log('Server running on %s', server.info.uri);
