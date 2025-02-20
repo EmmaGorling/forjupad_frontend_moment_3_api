@@ -28,6 +28,7 @@ const init = async () => {
 
     // Routes
     require('./Routes/User.Routes')(server);
+    require('./Routes/Blog.Routes')(server);
 
     await server.start();
     console.log('Server running on %s', server.info.uri);

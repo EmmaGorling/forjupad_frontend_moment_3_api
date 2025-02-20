@@ -2,7 +2,7 @@ const Mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const { required } = require('joi');
 
-const UserSchema = Mongoose.Schema({
+const UserSchema = new Mongoose.Schema({
     firstName: {
         type: String,
         required: true

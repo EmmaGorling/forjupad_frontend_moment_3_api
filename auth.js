@@ -13,7 +13,7 @@ module.exports = {
             cookie: {
                 name: 'jwt',
                 password: process.env.COOKIE_PASSWORD,
-                isSecure: true,             // HTTPS
+                isSecure: false,             // HTTPS
                 path: '/',
                 ttl: 24 * 60 * 60 * 1000,   // 24 hours
                 isSameSite: 'None',
@@ -23,6 +23,7 @@ module.exports = {
             // Validate HTTP-Cookie
             validate: async (request, session) => {
                 try {
+
                     const token = session;  // Get token
                     
                     if(!token) {

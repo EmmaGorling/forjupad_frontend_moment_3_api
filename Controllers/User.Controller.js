@@ -41,7 +41,7 @@ exports.updateUser = async (request, h) => {
         const updatedUser = await User.findByIdAndUpdate(request.params.id, request.payload, { new: true });
         return h.response(updatedUser).code(200);
     } catch (error) {
-        return h.response(error).code(500);
+        return h.response({ message: error.message }).code(500);
     }
 };
 
@@ -51,7 +51,7 @@ exports.deleteUser = async (request, h) => {
         await User.findByIdAndDelete(request.params.id);
         return h.response().code(204);
     } catch (error) {
-        return h.response(error).code(500);
+        return h.response({ message: error.message }).code(500);
     }
 };
 
