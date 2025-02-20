@@ -35,6 +35,26 @@ exports.addUser = async (request, h) => {
     }
 }
 
+// Update user
+exports.updateUser = async (request, h) => {
+    try {
+        const updatedUser = await User.findByIdAndUpdate(request.params.id, request.payload, { new: true });
+        return h.response(updatedUser).code(200);
+    } catch (error) {
+        return h.response(error).code(500);
+    }
+};
+
+// Delete user 
+exports.deleteUser = async (request, h) => {
+    try {
+        await User.findByIdAndDelete(request.params.id);
+        return h.response().code(204);
+    } catch (error) {
+        return h.response(error).code(500);
+    }
+};
+
 // Login
 exports.loginUser = async (request, h) => {
     try {

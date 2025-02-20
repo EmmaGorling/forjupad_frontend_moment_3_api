@@ -6,11 +6,13 @@ const Joi = require('joi');
 module.exports = (server) => {
     server.route(
         [{
+            // Get all users
             method: 'GET',
             path: '/users',
             handler: userControllers.getUsers
         }, 
         {
+            // Add user
             method: 'POST',
             path: '/users',
             handler: userControllers.addUser,
@@ -30,6 +32,19 @@ module.exports = (server) => {
             }
         },
         {
+            // Update user
+            method: 'PUT',
+            path: '/users/{id}',
+            handler: userControllers.updateUser
+        },
+        {
+            // Delete user
+            method: 'DELETE',
+            path: '/users/{id}',
+            handler: userControllers.deleteUser
+        },
+        {
+            // Login user
             method: 'POST',
             path: '/users/login',
             handler: userControllers.loginUser,
@@ -47,6 +62,7 @@ module.exports = (server) => {
             }
         },
         {
+            // Logout user
             method: 'GET',
             path: '/users/logout',
             handler: userControllers.logoutUser,
