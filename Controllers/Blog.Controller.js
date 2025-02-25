@@ -31,6 +31,7 @@ exports.getPostById = async (request, h) => {
 exports.getRecentPosts = async (request, h) => {
     try {
         const posts = await Blog.find({})
+            .populate('author', 'firstName lastName email')
             .sort({createdAt: -1})
             .limit(10);
 
