@@ -9,7 +9,10 @@ module.exports = (server) => {
             // Get all users
             method: 'GET',
             path: '/users',
-            handler: userControllers.getUsers
+            handler: userControllers.getUsers,
+            options: {
+                auth: false
+            }
         }, 
         {
             // Add user

@@ -8,7 +8,7 @@ require('dotenv').config();
 // Get users
 exports.getUsers = async (request, h) => {
     try {
-        const users = await User.find({});
+        const users = await User.find({}).select('-password');
         return users;
     } catch (error) {
         return h.response({ message: error.message }).code(500);
