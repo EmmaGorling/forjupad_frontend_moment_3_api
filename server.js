@@ -9,7 +9,7 @@ const init = async () => {
         host: '0.0.0.0',
         routes: {
             cors: {
-                origin: ['http://localhost:5500', 'https://www.thunderclient.com'],
+                origin: ['http://localhost:5500', 'https://www.thunderclient.com', 'http://localhost:5173'],
                 credentials: true, // Cookies
                 maxAge: 86400,
                 headers: ["Accept", "Content-Type", "Access-Control-Allow-Origin"]
