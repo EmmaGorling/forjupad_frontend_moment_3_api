@@ -5,7 +5,7 @@ const Blog = require('../Models/Blog.Model');
 // Get all posts
 exports.getPosts = async (request, h) => {
     try {
-        const posts = await Blog.find().populate('author', 'firstName lastName email');
+        const posts = await Blog.find().populate('author', 'firstName lastName email').sort({createdAt: -1});
         return h.response(posts).code(200);
     } catch (error) {
         return h.response({ message: error.message }).code(500);
@@ -22,6 +22,19 @@ exports.getPostById = async (request, h) => {
         } 
 
         return h.response(post).code(200);
+    } catch (error) {
+        return h.response({ message: error.message }).code(500);
+    }
+}
+
+// Get 10 recent posts
+exports.getRecentPosts = async (request, h) => {
+    try {
+        const posts = await Blog.find({})
+            .sort({createdAt: -1})
+            .limit(10);
+
+            return h.response(posts).code(200);
     } catch (error) {
         return h.response({ message: error.message }).code(500);
     }

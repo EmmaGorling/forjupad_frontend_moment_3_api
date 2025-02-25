@@ -25,6 +25,15 @@ module.exports = (server) => {
             }
         },
         {
+            // Get 10 recent posts
+            method: 'GET',
+            path: '/posts/recent',
+            handler: BlogController.getRecentPosts,
+            options: {
+                auth: false
+            }
+        },
+        {
             // Create blogpost
             method: 'POST',
             path: '/posts',
