@@ -79,7 +79,7 @@ exports.loginUser = async (request, h) => {
         // Generate token 
         const token = generateToken(user);
 
-        return h.response({ message: 'You are now logged in! '}).state('jwt', token);
+        return h.response({ message: 'You are now logged in!', user: user }).state('jwt', token);
     } catch (error) {
         return h.response({ message: error.message }).code(500);
     }
@@ -97,6 +97,14 @@ exports.logoutUser = async (request, h) => {
     }
 }
 
+// Validate token
+exports.validateToken = async (request, h) => {
+    try {
+        return h.response({ message: "Token is valid", user: request.auth.credentials }).code(200);
+    } catch (error) {
+        return h.response({ message: "Invalid token" }).code(401);
+    }
+}
 
 // Generate token
 const generateToken = (user) => {

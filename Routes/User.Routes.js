@@ -69,6 +69,12 @@ module.exports = (server) => {
             options: {
                 auth: false
             }
+        },
+        {
+            // Validate token
+            method: 'GET',
+            path: '/users/validate',
+            handler: userControllers.validateToken
         }]
     )
 }
