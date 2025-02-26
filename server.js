@@ -9,10 +9,10 @@ const init = async () => {
         host: '0.0.0.0',
         routes: {
             cors: {
-                origin: ['http://localhost:5500', 'https://www.thunderclient.com', 'http://localhost:5173'],
+                origin: ['http://localhost:5500', 'https://www.thunderclient.com', 'http://localhost:5173', 'https://forjupad-frontend-moment-3-api.onrender.com'],
                 credentials: true, // Cookies
                 maxAge: 86400,
-                headers: ["Accept", "Content-Type", "Access-Control-Allow-Origin"]
+                headers: ["Accept", "Content-Type", "Access-Control-Allow-Origin", "Authorization"]
             }
         }
     });
