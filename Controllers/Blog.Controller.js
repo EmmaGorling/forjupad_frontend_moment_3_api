@@ -44,8 +44,8 @@ exports.getRecentPosts = async (request, h) => {
 // Add blogpost
 exports.createPost = async (request, h) => {
     try {
-        const { title, content } = request.payload;
-        const userId = request.auth.credentials.user._id; // Get logged in user
+        const { title, content, userId } = request.payload;
+        //const userId = request.auth.credentials.user._id; // Get logged in user
 
         const newPost = new Blog({ title, content, author: userId });
         const savedPost = await newPost.save();
