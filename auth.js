@@ -17,7 +17,6 @@ module.exports = {
                 path: '/',
                 ttl: 24 * 60 * 60 * 1000,   // 24 hours
                 isSameSite: 'None',
-                domain: '.onrender.com',
                 clearInvalid: true,
                 isHttpOnly: true
             },
